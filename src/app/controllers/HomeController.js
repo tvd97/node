@@ -1,6 +1,7 @@
 class HomeController {
+  //[get]/home
   index(req, res) {
-    res.render("index");
+    res.render('index');
   }
 }
 module.exports = new HomeController();

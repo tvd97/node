@@ -4,8 +4,9 @@
   "description": "",
   "main": "./src/app.js",
   "scripts": {
+    "format": "lint-staged",
     "start": "nodemon --inspect ./src/app.js",
-    "watch":"node-sass -w src/resources/views/scss/ -o src/resources/css/",
+    "watch": "node-sass -w src/resources/views/scss/ -o src/resources/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,8 +29,19 @@
     "express-handlebars": "^7.0.4"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.1",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7"
+  },
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
