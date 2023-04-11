@@ -4,7 +4,7 @@ const handlebars = require("express-handlebars");
 const path = require("path");
 const app = express();
 const port = 5014;
-const router = require('./app/routers/index.js')
+const router = require('./src/routers/app')
 
 //http logger
 app.use(morgan("tiny"));
