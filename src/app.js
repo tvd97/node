@@ -3,8 +3,17 @@ const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = 4000;
 const route = require('./routes/index');
+const mongoClient = require("mongodb").MongoClient;
+const url =
+  "mongodb+srv://d1715:d13517f@dantv.9e5ud4b.mongodb.net/?retryWrites=true&w=majority";
+
+mongoClient.connect(url, function (err, db) {
+  if (err) throw err;
+  console.log("Database created!");
+  db.close();
+});
 
 //http logger
 app.use(morgan('tiny'));
