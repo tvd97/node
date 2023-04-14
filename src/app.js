@@ -1,14 +1,14 @@
 const db = require('./app/config/database/database');
 const morgan = require('morgan');
 const route = require('./routes/index');
-
+const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
 const port = 4000;
 
 // Use connect method to connect to the Server
-db.connect();
+db.connection();
 
 app.use(morgan('tiny'));
 

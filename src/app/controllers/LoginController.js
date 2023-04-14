@@ -21,4 +21,4 @@ class LoginController {
     res.render('login');
   }
 }
-module.exports = new HomeController();
+module.exports = new LoginController();
