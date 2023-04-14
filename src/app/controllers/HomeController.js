@@ -1,7 +1,19 @@
+const Flower = require('../models/Flower');
+const { mongooseArrayObject } = require('../util/mongooseExt');
 class HomeController {
   //[get]/home
-  index(req, res) {
-    res.render('index');
+  index(req, res, next) {
+    //promise
+    Flower.find({})
+      .then((flower) => {
+        res.render('home', {
+          flower: mongooseArrayObject(flower),
+        });
+      })
+      .catch((error) => next(error));
+    /* call back
+    Flower.find({},function(flower,err)=>{})
+    */
   }
 }
 module.exports = new HomeController();
