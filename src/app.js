@@ -8,7 +8,7 @@ const app = express();
 const port = 4000;
 
 // Use connect method to connect to the Server
-db.connection();
+//db.connection();
 
 app.use(morgan('tiny'));
 
