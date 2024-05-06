@@ -1,14 +1,19 @@
-const db = require('./app/config/database/database');
+const DatabaseConnection = require('./app/config/database/database');
+const flower= require('./app/config/database/flower');
 const morgan = require('morgan');
 const route = require('./routes/index');
 const express = require('express');
 const path = require('path');
 const handlebars = require('express-handlebars');
 const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 const port = 4000;
 
 // Use connect method to connect to the Server
-//db.connection();
+DatabaseConnection.connect();
+DatabaseConnection.getFlower();
+//flower.getFlower();
 
 app.use(morgan('tiny'));
 
@@ -26,6 +31,6 @@ app.use(express.static(path.join(__dirname, '.', 'resources')));
 
 // init router
 route(app);
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server app listening on port ${port} ${__dirname}`);
 });
